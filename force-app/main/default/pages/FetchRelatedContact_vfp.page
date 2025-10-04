@@ -1,0 +1,52 @@
+<apex:page controller="FetchRelatedContact" >
+    <apex:form >
+        <apex:pageBlock title="Related Contact">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="save" action="{!updateconlist}" />
+                <apex:commandButton value="cancel" action="{!cancelconlist}" />
+                <apex:commandButton value="Add Rec" action="{!AddContact}" />
+            </apex:pageBlockButtons>
+            
+                <apex:variable value="{!0}" var="recon" />
+            
+            <apex:pageBlockTable value="{!conlist}" var="con">
+                <apex:column headerValue="Name">
+                    <apex:inputField value="{!con.lastname}"/>
+                </apex:column>
+                <apex:column headerValue="Phone" >
+                    <apex:inputField value="{!con.Phone}" />
+                </apex:column>
+                <apex:column headerValue="Email" >
+                    <apex:inputField value="{!con.Email}" />
+                </apex:column>
+               
+                <apex:column >
+                    <apex:commandButton action="{!DeleteContact}" value="Delete" >
+                    	<apex:param name="contactId" value="{!con.id}" assignTo="{!ids}" />
+                    </apex:commandButton>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+       <apex:pageBlock title="Add new contact" >
+        <apex:pageBlockTable value="{!newconlist}" var="new">
+            <apex:column headerValue="Last Name ">
+            	<apex:inputText value="{!new.lastName}" />
+            </apex:column>
+            <apex:column headerValue="Phone ">
+            	<apex:inputText value="{!new.Phone}" />
+            </apex:column>
+            <apex:column headerValue="Email">
+            	<apex:inputText value="{!new.Email}" />
+            </apex:column>
+            <apex:column headerValue="Delete">
+                <apex:commandButton >
+                	<apex:param name="Delete" value="{!deletecon}" assignTo="{!deletecon}" />
+                </apex:commandButton>
+            </apex:column>
+            
+        </apex:pageBlockTable>
+       </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

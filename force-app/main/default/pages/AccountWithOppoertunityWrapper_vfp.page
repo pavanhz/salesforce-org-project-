@@ -1,0 +1,36 @@
+<apex:page controller="AccountWithOppoertunityWrapper">
+    <apex:form >
+    	<apex:pageBlock title=" Select Account's">
+           <apex:pageBlockButtons >
+           	<apex:commandButton value="Select Account" action="{!SelectAccount}" /> 
+           </apex:pageBlockButtons>
+        	<apex:pageBlockTable value="{!wrapperlist}" var="wrap">
+                <apex:column headerValue="Account Name ">
+                    <apex:inputField value="{!wrap.acc.Name}" />
+                </apex:column>
+                <apex:column headerValue="Account Name ">
+                    <apex:inputField value="{!wrap.acc.phone}" />
+                </apex:column>
+                <apex:column headerValue="Account Industry ">
+                    <apex:inputField value="{!wrap.acc.Industry}" />
+                </apex:column>
+                <apex:column headerValue="select Account " >
+                    <apex:inputCheckbox value="{!wrap.ischeck}" />
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+         
+        <apex:pageBlock title="Account With theire Realated Opportunity ">
+        	<apex:pageBlockTable value="{!acclist}" var="wrap">
+            	<apex:column value="{!wrap.acc.Name}" headerValue="Account Name " />
+                <apex:column >
+                	<apex:pageBlockTable value="{!wrap.opplist}" var="opp">
+                    	<apex:column value="{!opp.Name}" headerValue="Opporunity Name " />
+                        <apex:column value="{!opp.StageName}" headerValue="Opporunity StageName " />
+                        <apex:column value="{!opp.CloseDate}" headerValue="Opporunity CloseDate " />
+                    </apex:pageBlockTable>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

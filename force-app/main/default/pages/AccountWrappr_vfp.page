@@ -1,0 +1,39 @@
+<apex:page controller="AccountWrapper" >
+    <apex:form >
+    	<apex:pageBlock title="Select account ">
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Select Account " action="{!selectedvalue}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!accwraplist}" var="accwar">
+                <apex:column headerValue="Account Name " >
+                	<apex:outputField value="{!accwar.acc.name}" />
+                </apex:column>
+                <apex:column headerValue="Account Phone">
+                	<apex:outputField value="{!accwar.acc.phone}" />
+                </apex:column>
+                <apex:column headerValue="Account Industry ">
+                	<apex:outputField value="{!accwar.acc.industry}" />
+                </apex:column>
+                <apex:column headerValue="select Account ">
+                	<apex:inputCheckbox value="{!accwar.ischeck}" />
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Selected Account ">
+        	<apex:pageBlockTable value="{!acclist }" var="acc"> 
+                <apex:column headerValue="Account Name ">
+                    <apex:outputField value="{!acc.Name}" />
+                </apex:column>
+                <apex:column headerValue="Account Phone">
+                    <apex:inputField value="{!acc.Phone}" />
+                </apex:column>
+                <apex:column headerValue="Account Industry ">
+                    <apex:inputField value="{!acc.Industry}" />
+                </apex:column>                
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

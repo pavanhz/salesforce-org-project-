@@ -1,0 +1,49 @@
+<apex:page controller="AccountWithContactWrapper">
+    <apex:form >
+    	<apex:pageBlock title="Select Account With Realted Contacts ">
+            <apex:pageBlockButtons >
+            	<apex:commandButton value="Select" action="{!selectContact}"  />
+            </apex:pageBlockButtons>
+        	<apex:pageBlockTable value="{!wrapperlist}" var="wr">
+                <apex:column headerValue="Account Name ">
+                	<apex:inputField value="{!wr.acc.Name}" />
+                </apex:column>
+                <apex:column headerValue="Account phone ">
+                	<apex:inputField value="{!wr.acc.phone}" />
+                </apex:column>
+                <apex:column headerValue="Account Industry ">
+                	<apex:inputField value="{!wr.acc.Industry}" />
+                </apex:column>
+                <apex:column headerValue="Select Account">
+                	<apex:inputCheckbox value="{!wr.ischeck}" />
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Account with Contact">
+        	<apex:pageBlockTable value="{!selectlist}" var="accwr">
+            	<apex:column value="{!accwr.acc.Name}" />
+                <apex:column headerValue="Opportunity Name " >
+                    <apex:pageBlockTable value="{!accwr.opplist }" var="opp">
+                    	<apex:column value="{!opp.Name}" headerValue="Opportunity Name" />
+                        <apex:column value="{!opp.StageName}" headerValue="StageName"/>
+                        <apex:column headerValue="select Opportunity" >
+                        	<apex:inputCheckbox value="{!accwr.oppischeck}" />
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:column>
+                <apex:column headerValue="Contact ">
+                	<apex:pageBlockTable value="{! accwr.conlist}" var="con">
+                    	<apex:column value="{!con.lastName}" headerValue="last Name " />
+                        <apex:column value="{!con.phone}" headerValue="last Phone " />
+                        <apex:column value="{!con.email}" headerValue="last Email " />
+                        <apex:column >
+                        	<apex:inputCheckbox value="{!accwr.conischeck}" />
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

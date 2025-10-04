@@ -1,0 +1,56 @@
+<apex:page controller="CreateAccConOpp" >
+    <apex:form >
+    	<apex:pageBlock title="Create Account Realeted Contact And Opportunity">
+        	<apex:pageBlockButtons >
+            	<apex:commandButton value="save" action="{!save}" />
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection collapsible="true" columns="2" title="Account Information">
+                <apex:inputField value="{!acclist.Name}" />
+                <apex:inputField value="{!acclist.Phone}" />
+                <apex:inputField value="{!acclist.Type}" /> 
+                <apex:inputField value="{!acclist.Industry}" />
+                <apex:inputField value="{!acclist.Rating}" />
+                <apex:inputField value="{!acclist.Ownership}" />
+            </apex:pageBlockSection>
+            
+           <apex:pageBlockSection title="Realted Contact" collapsible="true" columns="2">
+          <apex:pageBlockTable value="{!conlist}" var="c" >
+              <apex:column headerValue="Fisrt Name">
+                    <apex:inputField value="{!c.FirstName}" />
+                </apex:column>
+                <apex:column headerValue="Last Name" >
+                	<apex:inputField value="{!c.LastName}" />
+                </apex:column>
+                <apex:column headerValue="Phone" >
+                    <apex:inputField value="{!c.Phone}" />
+                </apex:column>
+                <apex:column headerValue="Email" >
+                	<apex:inputField value="{!c.Email}" />
+                </apex:column>              
+          </apex:pageBlockTable>
+           </apex:pageBlockSection>
+           
+           <apex:pageBlockSection title="Opportunity Information">
+            <apex:pageBlockTable value="{!Opplist}" var="opp">
+                <apex:column headerValue="Opportunity Name" >
+                    <apex:inputField value="{!opp.Name}" />
+                </apex:column>
+                
+                <apex:column headerValue="Stage Name" >
+                    <apex:inputField value="{!opp.StageName}" />
+                </apex:column>
+                
+                <apex:column headerValue="Date" >
+                    <apex:inputField value="{!opp.CloseDate}" />
+                </apex:column>
+                
+				<apex:column headerValue="Amount" >
+                    <apex:inputField value="{!opp.Amount}" />
+                </apex:column>                   
+            </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

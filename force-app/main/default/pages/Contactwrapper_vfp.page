@@ -1,0 +1,40 @@
+<apex:page controller="Contactwrapper">
+    <apex:form >
+    	<apex:pageBlock title="Contact List ">
+        	<apex:pageBlockButtons >
+            	<apex:commandButton value="Select Contact" action="{!SelectedContact}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!Wrapperlist}" var="wrap">
+                <apex:column headerValue="Contact Name">
+                    <apex:inputField value="{!wrap.con.Name}" />
+                </apex:column>
+                <apex:column headerValue="Contact Phone">
+                    <apex:inputField value="{!wrap.con.Phone}" />
+                </apex:column>
+                <apex:column headerValue="Contact Email">
+                    <apex:inputField value="{!wrap.con.Email}" />
+                </apex:column>
+                <apex:column headerValue="Select ">
+                    <apex:inputCheckbox value="{!wrap.ischeck}" />
+                </apex:column>
+                
+            </apex:pageBlockTable>
+            
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Selected Contact">
+        	<apex:pageBlockTable value="{!conlist}" var="con">
+                <apex:column headerValue="contact name " >
+                	<apex:inputField value="{!con.Name}" />
+                </apex:column>
+                <apex:column headerValue="contact phone " >
+                	<apex:inputField value="{!con.phone}" />
+                </apex:column>
+                <apex:column headerValue="contact Email " >
+                	<apex:inputField value="{!con.Email}" />
+                </apex:column>
+                
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

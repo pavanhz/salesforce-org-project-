@@ -1,0 +1,43 @@
+<apex:page controller="FetchRelatedOpp">
+    <apex:form >
+        
+    	<apex:pageBlock >
+        	<apex:pageBlockButtons >
+            	<apex:commandButton value="save" action="{!updateopp}" />
+                <apex:commandButton value="cancel" action="{!cancelopp}" />
+                <apex:commandButton value="Add Rec" action="{!AddOpportunity}" reRender="newOppTable" />
+            </apex:pageBlockButtons>
+            
+			<apex:pageBlockTable value="{!opplist}" var="op">
+                <apex:column headerValue="Opprtunity Name ">
+                	<apex:inputField value="{!op.Name}" />
+                </apex:column>
+                <apex:column headerValue="CloseDate">
+                    <apex:inputField value="{!op.CloseDate}" />
+                </apex:column>
+                <apex:column headerValue="StageName">
+                    <apex:inputField value="{!op.StageName}" />
+                </apex:column>
+                
+            </apex:pageBlockTable>
+			            
+            
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Add Opportunity ">
+        	<apex:pageBlockTable id="newOppTable" value="{!newopplist}" var="new">
+                <apex:column headerValue="Opprtunity Name ">
+                	<apex:inputField value="{!new.Name}" />
+                </apex:column>
+                <apex:column headerValue="CloseDate">
+                    <apex:inputField value="{!new.CloseDate}" />
+                </apex:column>
+                <apex:column headerValue="StageName">
+                    <apex:inputField value="{!new.StageName}" />
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+    </apex:form>
+    
+</apex:page>
